@@ -1,0 +1,75 @@
+donm/
+└── Source/
+    └── Scripts/
+        ├── 3_Game/
+        │   └── ExpansionBuilderToolkit/
+        │       ├── BuilderConfig.c
+  class EBTBuilderConfig
+{
+	bool EnableMod = true;
+
+	int HammerT1Uses = 50;
+	int HammerT2Uses = 100;
+	int HammerT3Uses = 200;
+
+	bool InfiniteAdminHammer = true;
+
+	bool BuildWithoutMaterials = true;
+	bool AllowRepair = true;
+	bool AllowDestroy = true;
+
+	ref array<string> AdminSteamIDs;
+
+	void EBTBuilderConfig()
+	{
+		AdminSteamIDs = new array<string>;
+	}
+}
+        │       └── BuilderSettings.c
+class EBTBuilderSettings
+{
+	static const string PROFILE_FOLDER = "$profile:ExpansionBuilderToolkit/";
+	static const string CONFIG_FILE = PROFILE_FOLDER + "BuilderConfig.json";
+
+	static ref EBTBuilderConfig Config;
+
+	static void Load()
+	{
+		if (!FileExist(PROFILE_FOLDER))
+			MakeDirectory(PROFILE_FOLDER);
+
+		if (!FileExist(CONFIG_FILE))
+		{
+			Config = new EBTBuilderConfig();
+
+			JsonFileLoader<EBTBuilderConfig>.JsonSaveFile(CONFIG_FILE, Config);
+
+			Print("[ExpansionBuilderToolkit] Config creada.");
+			return;
+		}
+
+		Config = new EBTBuilderConfig();
+
+		JsonFileLoader<EBTBuilderConfig>.JsonLoadFile(CONFIG_FILE, Config);
+
+		Print("[ExpansionBuilderToolkit] Config cargada.");
+	}
+}
+        │
+        ├── 4_World/
+        │   └── ExpansionBuilderToolkit/
+        │
+        └── 5_Mission/
+            └── ExpansionBuilderToolkit/
+                └── MissionServer.c
+          modded class MissionServer
+{
+	override void OnInit()
+	{
+		super.OnInit();
+
+		EBTBuilderSettings.Load();
+
+		Print("[ExpansionBuilderToolkit] Inicializado correctamente.");
+	}
+}
