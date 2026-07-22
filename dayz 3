@@ -1,0 +1,53 @@
+Source
+│
+├── config.cpp
+class CfgPatches
+{
+    class ExpansionBuilderToolkit
+    {
+        units[] = {};
+        weapons[] =
+        {
+            "EBT_BuilderHammer_T1",
+            "EBT_BuilderHammer_T2",
+            "EBT_BuilderHammer_T3",
+            "EBT_AdminHammer"
+        };
+
+        requiredVersion = 1.28;
+
+        requiredAddons[] =
+        {
+            "DZ_Data",
+            "DZ_Scripts",
+            "DayZExpansion_Core",
+            "DayZExpansion_BaseBuilding"
+        };
+    };
+};
+class CfgWeapons
+{
+    class Hammer;
+
+    class EBT_BuilderHammer_T1: Hammer
+    {
+        scope = 2;
+        displayName = "Builder Hammer I";
+        descriptionShort = "50 usos";
+
+        hiddenSelectionsTextures[] =
+        {
+            "ExpansionBuilderToolkit\Data\BuilderHammer_T1_co.paa"
+        };
+    };
+}
+│
+└── Scripts
+    └── 4_World
+        └── ExpansionBuilderToolkit
+            │
+            ├── BuilderHammer_Base.c
+            ├── BuilderHammer_T1.c
+            ├── BuilderHammer_T2.c
+            ├── BuilderHammer_T3.c
+            └── AdminHammer.c
