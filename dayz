@@ -1,0 +1,57 @@
+ExpansionBuilderToolkit/
+│
+├── Source/
+│   ├── Scripts/
+│   │   ├── 1_Core/
+│   │   ├── 3_Game/
+│   │   ├── 4_World/
+│   │   └── 5_Mission/
+│   ├── Data/
+│   └── GUI/
+│
+├── Build/
+├── Keys/
+├── Docs/
+│
+├── README.md
+# Expansion Builder Toolkit
+
+Expansion Builder Toolkit para DayZ Standalone 1.28.
+
+## Compatibilidad
+
+- DayZ 1.28
+- Community Framework (CF)
+- DayZ Expansion Core
+- DayZ Expansion BaseBuilding
+- Namalsk
+- VPPAdmin
+- CodeLock
+
+## Estado
+
+🚧 En desarrollo
+
+## Objetivos
+
+- Builder Hammer
+- Construcción sin materiales
+- Reparación
+- Demolición
+- Blueprints
+- Exportar e importar bases
+- Copiar y pegar bases
+- Integración con Expansion
+├── LICENSE
+Copyright (c) 2026 Emmanuel
+
+Todos los derechos reservados.
+└── .gitignore
+*.pbo
+*.bisign
+*.bikey
+*.log
+*.tmp
+*.bak
+Thumbs.db
+.DS_Store
